@@ -4,7 +4,7 @@ export default async function http({ method, url, data }) {
 
     const config = {
         method: method.toLowerCase(),
-        url: 'localhost:8080/' + url
+        url: 'http://localhost:8080/' + url
     };
 
     if (data) config['data'] = data;

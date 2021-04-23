@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 
 export const TopToolBar = ({username, logOutFunc}) => {
     return (
-        <Container>
+        <Container className={'fixed-top'}>
             <Nav className={'app-bar'}>
                 <Col
                     xs={{offset: 7, span: 5}}

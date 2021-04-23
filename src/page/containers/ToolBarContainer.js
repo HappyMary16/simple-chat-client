@@ -4,7 +4,7 @@ import { logOut } from "../../actions/authAction";
 
 const mapStateToProps = state => {
     return {
-        username: state.chat.authReducer.username
+        username: state.authReducer.username
     };
 };
 

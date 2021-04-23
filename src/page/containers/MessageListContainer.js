@@ -3,8 +3,8 @@ import {MessageList} from "../components/MessageList";
 
 const mapStateToProps = state => {
     return {
-        username: state.chat.authReducer.username,
-        messages: state.chat.messageReducer.messages
+        username: state.authReducer.username,
+        messages: state.messageReducer.messages
     };
 };
 

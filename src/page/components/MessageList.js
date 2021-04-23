@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 export const MessageList = ({messages, username}) => {
 
     return (
-        <Container>
+        <Container className="fixed-bottom fixed-messages">
             <ListGroup variant={'flush'}>
                 {messages &&
                 messages.map(message => (

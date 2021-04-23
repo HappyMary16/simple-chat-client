@@ -1,16 +1,12 @@
 import StateLoader from './StateLoader';
 import createSagaMiddleware from 'redux-saga';
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
-import {chat} from '../reducers';
-import rootSaga from "./rootSaga";
+import { applyMiddleware, compose, createStore } from 'redux'
+import {rootReducer} from '../reducers';
+import index from "../sagas";
 
 export default function createAppStore() {
     const stateLoader = new StateLoader();
     const sagaMiddleware = createSagaMiddleware();
-
-    const rootReducer = combineReducers({
-        chat
-    });
 
     const store = createStore(
         rootReducer,
@@ -20,7 +16,7 @@ export default function createAppStore() {
         )
     );
 
-    sagaMiddleware.run(rootSaga)
+    sagaMiddleware.run(index)
 
     store.subscribe(() => {
         stateLoader.saveState(store.getState());

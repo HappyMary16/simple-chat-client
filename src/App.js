@@ -6,18 +6,36 @@ import MessageListContainer from "./page/containers/MessageListContainer";
 import './styles.css';
 import LoginPageContainer from "./page/containers/LoginPageContainer";
 import MessageInputContainer from "./page/containers/MessageInputContainer";
+import {connect} from "react-redux";
+import {loadMessages} from "./actions/messageActions";
+import ErrorMessageContainer from "./page/containers/ErrorMessageContainer";
 
 class App extends Component {
-  render(){
+
+    componentDidMount() {
+        const { dispatch, isAuthorized } = this.props;
+        if (isAuthorized) {
+            dispatch(loadMessages())
+        }
+    }
+
+    render(){
       return(
           <Container fluid className={'main-container'}>
-              <ToolBarContainer/>
-              <LoginPageContainer/>
               <MessageListContainer/>
+              <ToolBarContainer/>
               <MessageInputContainer/>
+              <LoginPageContainer/>
+              <ErrorMessageContainer/>
           </Container>
       );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        isAuthorized: !!state.authReducer.username
+    };
+};
+
+export default connect(mapStateToProps)(App);

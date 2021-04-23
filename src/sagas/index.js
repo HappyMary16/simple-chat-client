@@ -1,25 +1,8 @@
-import {call, takeEvery} from 'redux-saga/effects'
-// import {SEND_MESSAGE} from "../actions/messageActions";
-import http from "../services/http";
+import { all } from 'redux-saga/effects';
+import { messageWatcher } from './messageSagas';
 
-export function* messageWatcher() {
-    // yield takeEvery(SEND_MESSAGE, action => sendMessage(socket, action));
+export default function* index() {
+    yield all([
+        messageWatcher()
+    ]);
 }
-
-// function* sendMessage(socket, action) {
-//     try {
-//         const { authorName, text } = action.payload
-//
-//         yield call(http, {
-//             url: 'chat',
-//             method: 'post',
-//             data: {
-//                 authorName,
-//                 text
-//             }
-//         })
-//
-//     } catch (e) {
-//         alert(e)
-//     }
-// }

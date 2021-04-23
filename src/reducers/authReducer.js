@@ -2,7 +2,7 @@ import {LOG_IN, LOG_OUT} from "../actions/authAction";
 import StateLoader from "../store/StateLoader";
 
 export default function authReducer(
-    state = new StateLoader().loadState().authReducer || { username: undefined },
+    state = new StateLoader().loadState().authReducer || { },
     action
 ) {
     switch (action.type) {

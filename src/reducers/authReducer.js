@@ -1,8 +1,8 @@
-import {LOG_IN, LOG_OUT} from "../actions/authAction";
+import {LOG_IN, LOG_OUT, SAVE_USERNAME} from "../actions/authAction";
 import StateLoader from "../store/StateLoader";
 
 export default function authReducer(
-    state = new StateLoader().loadState().authReducer || { },
+    state = new StateLoader().loadState().authReducer || { isAuthorized: false },
     action
 ) {
     switch (action.type) {
@@ -10,13 +10,20 @@ export default function authReducer(
         case LOG_IN:
             return {
                 ...state,
-                username: action.payload.username
+                isAuthorized: true
             };
 
         case LOG_OUT:
             return {
                 ...state,
+                isAuthorized: false,
                 username: undefined
+            };
+
+        case SAVE_USERNAME:
+            return {
+                ...state,
+                username: action.payload.username
             };
 
         default:

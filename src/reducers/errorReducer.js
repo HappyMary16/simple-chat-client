@@ -16,7 +16,7 @@ export default function errorReducer(
         case REMOVE_ERROR:
             return {
                 ...state,
-                error: null
+                error: undefined
             };
 
         default:

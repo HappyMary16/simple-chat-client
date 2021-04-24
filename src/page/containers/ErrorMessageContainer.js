@@ -9,7 +9,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    closeFunc() {
+    closeErrorMessage() {
         return () => {
             dispatch(removeError())
         }

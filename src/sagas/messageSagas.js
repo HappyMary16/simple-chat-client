@@ -1,8 +1,8 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
 import http from "../services/httpService";
-import {clearMessage, LOAD_MESSAGES, renderMessages, saveMessageToSend, SEND_MESSAGE} from "../actions/messageActions";
+import {clearMessage, LOAD_MESSAGES, renderMessages, SEND_MESSAGE} from "../actions/messageActions";
 import {addError} from "../actions/errorAction";
-import {sendMessage} from "../services/socketService";
+import {socket} from "../services/socketService";
 
 export function* messageWatcher() {
     yield takeEvery(LOAD_MESSAGES, loadMessagesProcessor);
@@ -30,9 +30,12 @@ function* sendMessageProcessor(action) {
     try {
         const { username, messageText } = action.payload
 
-        yield call(sendMessage, {
-            name: username,
-            text: messageText
+        yield call(socket, {
+            topic: "/app/chat",
+            body: {
+                authorName: username,
+                text: messageText
+            }
         })
 
         yield put(clearMessage())

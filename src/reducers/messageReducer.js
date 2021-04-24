@@ -1,8 +1,8 @@
 import {LOG_OUT} from "../actions/authAction";
-import {CLEAR_MESSAGE, RENDER_MESSAGE, RENDER_MESSAGES, SAVE_MESSAGE, SEND_MESSAGE} from "../actions/messageActions";
+import {CLEAR_MESSAGE, RENDER_MESSAGE, RENDER_MESSAGES, SAVE_MESSAGE} from "../actions/messageActions";
 import StateLoader from "../store/StateLoader";
 export default function messageReducer(
-    state ={ messages: [], messageText: "" } || { messages: [], messageText: "" },
+    state = new StateLoader().loadState().messageReducer || { messages: [], messageText: "" },
     action
 ) {
     switch (action.type) {
@@ -19,14 +19,8 @@ export default function messageReducer(
                 messages: [
                     ...state.messages,
                     action.payload.message
-                    ]
+                ]
             };
-
-        case SEND_MESSAGE:
-            return {
-                ...state,
-                messageText: action.payload.messageText
-            }
 
         case CLEAR_MESSAGE:
             return {
@@ -34,10 +28,17 @@ export default function messageReducer(
                 messageText: ""
             }
 
+        case SAVE_MESSAGE:
+            return {
+                ...state,
+                messageText: action.payload.messageText
+            }
+
         case LOG_OUT:
             return {
                 ...state,
-                messages: []
+                messages: [],
+                messageText: ""
             };
 
         default:

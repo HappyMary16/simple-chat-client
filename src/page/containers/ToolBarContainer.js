@@ -4,12 +4,12 @@ import { logOut } from "../../actions/authAction";
 
 const mapStateToProps = state => {
     return {
-        username: state.authReducer.username
+        isAuthorized: state.authReducer.isAuthorized
     };
 };
 
 const mapDispatchToProps = dispatch => ({
-    logOutFunc() {
+    logOut() {
         return () => {
             dispatch(logOut());
         };

@@ -4,6 +4,7 @@ export const RENDER_MESSAGE = 'PROCESS_MESSAGE'
 
 export const SEND_MESSAGE = 'SEND_MESSAGE'
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE'
+export const SAVE_MESSAGE = 'SAVE_MESSAGE'
 
 export const loadMessages = () => ({
     type: LOAD_MESSAGES
@@ -25,6 +26,13 @@ export const renderMessage = (message) => ({
 
 export const clearMessage = () => ({
     type: CLEAR_MESSAGE
+})
+
+export const saveMessage = (messageText) => ({
+    type: SAVE_MESSAGE,
+    payload: {
+        messageText
+    }
 })
 
 export const sendMessage = (username, messageText) => ({

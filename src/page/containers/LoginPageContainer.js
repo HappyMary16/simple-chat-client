@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {logIn, saveUsername} from "../../actions/authAction";
+import {logIn, saveUsername} from "../../actions/authActions";
 import {LogInPage} from "../components/LogInPage";
-import {addError} from "../../actions/errorAction";
+import {addError} from "../../actions/errorActions";
 import {loadMessages} from "../../actions/messageActions";
 import React, {Component} from "react";
 

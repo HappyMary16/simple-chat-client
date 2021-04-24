@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {addError} from "../../actions/errorAction";
+import {addError} from "../../actions/errorActions";
 import {saveMessage, sendMessage} from "../../actions/messageActions";
 import {MessageInput} from "../components/MessageInput";
 import React, {Component} from "react";
@@ -19,7 +19,12 @@ class MessageInputContainer extends Component {
     }
 
     sendMessage() {
-        const { dispatch, username, messageText } = this.props
+        const { dispatch, username, messageText, isConnected } = this.props
+
+        if (!isConnected) {
+            dispatch(addError("Sorry, can't connect to server :("))
+            return
+        }
 
         if (messageText && messageText.length > 0) {
             dispatch(sendMessage(username, messageText));
@@ -42,7 +47,8 @@ class MessageInputContainer extends Component {
 const mapStateToProps = state => {
     return {
         username: state.authReducer.username,
-        messageText: state.messageReducer.messageText
+        messageText: state.messageReducer.messageText,
+        isConnected: state.connectionReducer.isConnected
     };
 };
 

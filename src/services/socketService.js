@@ -1,29 +1,35 @@
 import {renderMessage} from "../actions/messageActions";
-import {addError} from "../actions/errorAction";
+import {addError} from "../actions/errorActions";
+import {socketUrl, topics} from '../config.json'
+import {connected, disconnected} from "../actions/connectionActions";
 
 let stompClient = null;
 
 export const setupSocket = (dispatch) => {
     const Stomp = require("stompjs");
     let SockJS = require("sockjs-client");
-    SockJS = new SockJS('http://localhost:8080/chat');
+    SockJS = new SockJS(socketUrl);
     stompClient = Stomp.over(SockJS);
     stompClient.connect({}, () => onConnected(dispatch), (err) => onError(err, dispatch));
 }
 
 const onConnected = (dispatch) => {
-    stompClient.subscribe(
-        "/topic/messages",
-        (frame) => {
-            dispatch(renderMessage(JSON.parse(frame.body)))
-        }
-    );
+    dispatch(connected());
+
+    topics.forEach(topic =>
+        stompClient.subscribe(
+            topic,
+            (frame) => {
+                dispatch(renderMessage(JSON.parse(frame.body)))
+            }
+        ));
 };
 
 const onError = (err, dispatch) => {
+    dispatch(disconnected());
     dispatch(addError(err));
 };
 
-export const socket = ({ topic, body }) => {
+export const socket = ({topic, body}) => {
     stompClient.send(topic, {}, JSON.stringify(body));
 };

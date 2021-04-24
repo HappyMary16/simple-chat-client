@@ -1,5 +1,5 @@
 import StateLoader from "../store/StateLoader";
-import {ADD_ERROR, REMOVE_ERROR} from "../actions/errorAction";
+import {ADD_ERROR, REMOVE_ERROR} from "../actions/errorActions";
 
 export default function errorReducer(
     state = new StateLoader().loadState().errorReducer || {  },

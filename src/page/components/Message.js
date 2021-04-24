@@ -9,9 +9,9 @@ export const Message = ({ message, isRight }) => {
         <ListGroup.Item>
             <Row className={isRight ? "float-right" : "float-left"}>
                 <Col>
-                    <p className={'text'}>{message.text}</p>
+                    <p className={'text'}>{message.messageText}</p>
                 <rm/>
-                    <p className={'secondary-text'}>{message.time + ' ' + message.authorName}</p>
+                    <p className={'secondary-text'}>{message.time + ' ' + message.username}</p>
                 </Col>
             </Row>
         </ListGroup.Item>

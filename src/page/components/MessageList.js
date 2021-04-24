@@ -10,7 +10,7 @@ export const MessageList = ({messages, username}) => {
             <ListGroup variant={'flush'}>
                 {messages &&
                 messages.map(message => (
-                    <Message key={message.time} message={message} isRight={message.authorName === username}/>
+                    <Message key={message.time} message={message} isRight={message.username === username}/>
                 ))}
             </ListGroup>
         </Container>

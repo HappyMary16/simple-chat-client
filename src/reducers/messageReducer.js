@@ -1,4 +1,4 @@
-import {LOG_OUT} from "../actions/authAction";
+import {LOG_OUT} from "../actions/authActions";
 import {CLEAR_MESSAGE, RENDER_MESSAGE, RENDER_MESSAGES, SAVE_MESSAGE} from "../actions/messageActions";
 import StateLoader from "../store/StateLoader";
 export default function messageReducer(

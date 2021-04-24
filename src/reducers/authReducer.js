@@ -1,4 +1,4 @@
-import {LOG_IN, LOG_OUT, SAVE_USERNAME} from "../actions/authAction";
+import {LOG_IN, LOG_OUT, SAVE_USERNAME} from "../actions/authActions";
 import StateLoader from "../store/StateLoader";
 
 export default function authReducer(

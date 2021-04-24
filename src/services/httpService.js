@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { serviceUrl } from '../config.json'
 
 export default async function http({ method, url, data }) {
 
     const config = {
         method: method.toLowerCase(),
-        url: 'http://localhost:8080/' + url
+        url: serviceUrl + url
     };
 
     if (data) config['data'] = data;

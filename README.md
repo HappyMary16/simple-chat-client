@@ -2,11 +2,13 @@
 
 It is a client for a very simple chat.
 
-## Technology 
+### Technology 
 - Java Script 
 - ReactJS
 - Redux
 - Saga
+- SockJs
+- Axios
 - Bootstrap 
 
 You can find a server [here](https://github.com/HappyMary16/simple-chat-server).

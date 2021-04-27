@@ -4,15 +4,6 @@ It is a client for a very simple chat.
 
 You can find a server [here](https://github.com/HappyMary16/simple-chat-server).
 
-### Used technology 
-- Java Script 
-- ReactJS
-- Redux
-- Saga
-- SockJs
-- Axios
-- Bootstrap 
-
 ## For usage the application you need
 - [Node JS](https://nodejs.org/uk/)
 

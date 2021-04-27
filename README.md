@@ -4,7 +4,7 @@ It is a client for a very simple chat.
 
 You can find a server [here](https://github.com/HappyMary16/simple-chat-server).
 
-## For usage the application you need
+## Requirements
 - [Node JS](https://nodejs.org/uk/)
 
 ## Running the application
